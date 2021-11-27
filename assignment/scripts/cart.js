@@ -7,15 +7,34 @@ console.log(basket);
 const maxItems = 5;
 console.log(maxItems);
 
+// Add an item (string) to the basket array
 function addItem(item) {
-  for (let i = 0; i < item.length; i++) {
-    if (item.length > 0 && isFull() === false) {
+  // If the basket is full...
+  if (isFull()) {
+      // ...do not add the item, and return false
+      return false;
+  }
+  // If the basket is not full...
+  else {
+      // ... add item to the basket, and return true
       basket.push(item);
       return true;
-    }
   }
-    return false;
 }
+/**
+Why my function is like that below because I kept thinking that you have
+to loop through an array all the time to make it work.
+
+*/
+// function addItem(item) {
+//   for (let i = 0; i < item.length; i++) {
+//     if (item.length > 0 && isFull() === false) {
+//       basket.push(item);
+//       return true;
+//     }
+//   }
+//     return false;
+// }
 
 console.log('Adding apples (expect true)', addItem('apples'));
 console.log('Adding steak (expect true)', addItem('steak'));
@@ -40,13 +59,22 @@ function empty() {
 console.log(empty());
 console.log(`Basket is now ${basket} empty`);
 // end of empty
-
+/**
+// function for full basket
 function isFull() {
+// if basket is not full return false, you have room to add more
   if (basket.length < maxItems) {
     return false;
+// else if basket is full then return true, can't add anymore
   } else if (basket.length >= maxItems) {
       return true;
   }
+}
+*/
+
+// I was still not fully understand the return part, you can just return the array value without looping it.
+function isFull() {
+    return basket.length >= maxItems;
 }
 
 console.log('Adding banana(expect true)', addItem('banana'));
